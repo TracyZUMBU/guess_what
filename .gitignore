@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# eslintcache
+/home/wilder/Documents/DeveloppementWeb/ProjetWeb/guess_what/.eslintcache

@@ -1,0 +1,47 @@
+:root {
+  // all variable of colors used on the project
+  --color-green-primary: #06d6a0;
+  --color-pink-primary: #ef476f;
+  --color-white: #fff;
+  --color-white-secondary: #f9eae1;
+  --color-black: #000;
+  --color-right-answer: #5dcf36;
+  --color-wrong-answer: #d15f5f;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+// element's HTML properties
+html {
+  font-size: 62.5%;
+  @include respond(tab-land) {
+    // width < 1200?
+    font-size: 65%;
+  }
+
+  @include respond(tab-port) {
+    // width < 900?
+    font-size: 65%;
+  }
+
+  @include respond(desktop) {
+    font-size: 70%;
+  }
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  
+}
+
+.container {
+  background-color: var(--color-green-primary);
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+  height: 100%;
+}

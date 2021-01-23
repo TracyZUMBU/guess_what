@@ -24,3 +24,9 @@ yarn-error.log*
 
 # eslintcache
 /home/wilder/Documents/DeveloppementWeb/ProjetWeb/guess_what/.eslintcache
+.eslintcache
+eslintcache
+
+# cache
+.eslintcache
+.cache

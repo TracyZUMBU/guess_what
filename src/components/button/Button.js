@@ -6,19 +6,21 @@ export const Button = (props) => {
 
   const Button = styled.button`
     color: var(--color-pink-primary);
-    &.primary{
-        background-color: var(--color-pink-primary);
-        color:var(--color-white)
+    &.btn--primary {
+      background-color: var(--color-pink-primary);
+      color: var(--color-white);
+      border-color: var(--color-pink-primary);
     }
-    &.secondary{
-        background-color: var(--color-white);
-        color:var(--color-pink-primary)
+    &.btn--secondary {
+      background-color: var(--color-white);
+      border-color :  var(--color-white);
+      color: var(--color-pink-primary);
     }
   `;
 
   return (
-    <div className="">
-      <Button className={className}>{text}</Button>
-    </div>
+    <>
+      <Button className={"btn  btn--" + className}>{text}</Button>
+    </>
   );
 };

@@ -9,7 +9,9 @@
   --color-wrong-answer: #d15f5f;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 
@@ -33,7 +35,16 @@ html {
 
 body {
   font-family: "Roboto", sans-serif;
+}
 
+a {
+  cursor: pointer;
+}
+
+input {
+  &[type="radio"] + label {
+    font-size: $fontSize-medium;
+  }
 }
 
 .container {
@@ -44,8 +55,7 @@ body {
   padding-top: $PadTop-container;
   padding-bottom: $PadBot-container;
   height: 100%;
-  &--home{
+  &--home {
     justify-content: space-between;
   }
-
 }

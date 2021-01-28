@@ -25,7 +25,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   --color-right-answer: #5dcf36;
   --color-wrong-answer: #d15f5f; }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%; }
 
 html {
@@ -42,6 +44,12 @@ html {
 
 body {
   font-family: "Roboto", sans-serif; }
+
+a {
+  cursor: pointer; }
+
+input[type="radio"] + label {
+  font-size: 2.5rem; }
 
 .container {
   background-color: var(--color-green-primary);
@@ -62,7 +70,7 @@ body {
 .button-container {
   display: flex;
   flex-direction: column;
-  width: 80%; }
+  width: 75%; }
 
 .btn {
   border-radius: 2rem;
@@ -74,6 +82,32 @@ body {
   text-transform: uppercase;
   border: none;
   font-size: 2.5rem;
-  font-weight: bold; }
+  font-weight: bold;
+  width: 100%; }
   .btn:not(:last-child) {
     margin-bottom: 2.5rem; }
+
+.form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .form__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(100vh/5);
+    background-color: var(--color-white-secondary); }
+  .form__question {
+    font-size: 2.5rem;
+    margin-top: 2rem; }
+  .form__answer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 3.5rem; }
+  .form__opt {
+    text-align: center;
+    flex: 1; }

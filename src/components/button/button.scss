@@ -1,7 +1,7 @@
 .button-container{
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 75%;
 }
 
 .btn {
@@ -13,8 +13,9 @@
     height: 5rem;
     text-transform: uppercase;
     border:none;
-    font-size: $fontSize-btn;
+    font-size: $fontSize-medium;
     font-weight: bold;
+    width: 100%;
     &:not(:last-child){
         margin-bottom:2.5rem
     }

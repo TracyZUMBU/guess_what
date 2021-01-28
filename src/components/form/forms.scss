@@ -12,6 +12,7 @@
         width:100%;
         height: calc(100vh/5);
         background-color: var(--color-white-secondary);
+        margin-top: 3rem;
        }
        &__question{
         font-size: $fontSize-medium;
@@ -29,6 +30,10 @@
        &__opt{
            text-align: center;
            flex:1;
+           &--column{
+               display: flex;
+               flex-direction: column;
+           }
        }
    }
   

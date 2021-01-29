@@ -49,7 +49,8 @@ a {
   cursor: pointer; }
 
 input[type="radio"] + label {
-  font-size: 2.5rem; }
+  font-size: 2.5rem;
+  margin-left: 1rem; }
 
 .container {
   background-color: var(--color-green-primary);
@@ -88,7 +89,7 @@ input[type="radio"] + label {
     margin-bottom: 2.5rem; }
 
 .form {
-  width: 80%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center; }
@@ -98,7 +99,7 @@ input[type="radio"] + label {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: calc(100vh/5);
+    height: calc(100vh/4.5);
     background-color: var(--color-white-secondary);
     margin-top: 3rem; }
   .form__question {
@@ -108,7 +109,7 @@ input[type="radio"] + label {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin-bottom: 3.5rem; }
+    margin-bottom: 4rem; }
   .form__opt {
     text-align: center;
     flex: 1; }

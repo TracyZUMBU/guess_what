@@ -1,16 +1,20 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import FormItems from "./FormItems";
-import FormikControl from "../../formikSetup/FormikControl";
 
+//component
+import FormItems from "./FormItems";
+import FormikControl from "../../formSetup/FormikControl";
+import Button from "../button/Button";
+
+// Modules
 import {
   numOfPlayers,
   level,
   timeByRound,
   wordByRound,
-  roundByGame
+  roundByGame,
 } from "../../services/optionForm";
-import validationSchema from "../../formikSetup/ValidationSchema.js";
+import validationSchema from "../../formSetup/ValidationSchema.js";
 
 console.log("numOfPlayers:", numOfPlayers + validationSchema);
 
@@ -64,6 +68,9 @@ const Forms = () => {
                 name="roundByGame"
               ></FormikControl>
             </FormItems>
+            <div className="button-container">
+              <Button type="submit" className="primary" text="Jouer" />
+            </div>
           </Form>
         );
       }}

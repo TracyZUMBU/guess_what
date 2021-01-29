@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-export const Button = (props) => {
-  const { text, className } = props;
+const Button = (props) => {
+  const { text, className, type } = props;
 
   const Button = styled.button`
     color: var(--color-pink-primary);
@@ -20,7 +20,9 @@ export const Button = (props) => {
 
   return (
     <>
-      <Button className={"btn  btn--" + className}>{text}</Button>
+      <Button type={type} className={"btn  btn--" + className}>{text}</Button>
     </>
   );
 };
+
+export default Button;

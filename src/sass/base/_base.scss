@@ -49,13 +49,14 @@ input {
 }
 
 .container {
+  height: 100%;
   background-color: var(--color-green-primary);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: $PadTop-container;
   padding-bottom: $PadBot-container;
-  height: 100%;
+  overflow: scroll;
   &--home {
     justify-content: space-between;
   }

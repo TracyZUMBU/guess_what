@@ -1,7 +1,7 @@
 import React from "react";
 
-import RadioButtons from "../formikSetup/elementsForm/RadioButtons"
-import Input from "../formikSetup/elementsForm/Input"
+import RadioButtons from "../formSetup/elementsForm/RadioButtons"
+import Input from "../formSetup/elementsForm/Input"
 
 const FormikControl = (props) => {
     const { control, ...rest } = props;
@@ -11,6 +11,7 @@ const FormikControl = (props) => {
         break
       case "radio":
         return <RadioButtons {...rest} />;
+        break
       default:
         return null;
     }

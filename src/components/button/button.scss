@@ -1,23 +1,23 @@
-.button-container{
-    display: flex;
-    flex-direction: column;
-    width: 75%;
+.button-container {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: 2rem auto;
 }
 
 .btn {
-    border-radius: 2rem;
-    -webkit-border-radius: 2rem;
-    -moz-border-radius: 2rem;
-    -ms-border-radius: 2rem;
-    -o-border-radius: 2rem;
-    height: 5rem;
-    text-transform: uppercase;
-    border:none;
-    font-size: $fontSize-medium;
-    font-weight: bold;
-    width: 100%;
-    &:not(:last-child){
-        margin-bottom:2.5rem
-    }
+  border-radius: 3rem;
+  -webkit-border-radius: 3rem;
+  -moz-border-radius: 3rem;
+  -ms-border-radius: 3rem;
+  -o-border-radius: 3rem;
+  height: 6rem;
+  text-transform: uppercase;
+  border: none;
+  font-size: $fontSize-medium ;
+  font-weight: bold;
+  width: 100%;
+  &:not(:last-child) {
+    margin-bottom: 2.5rem;
+  }
 }
-

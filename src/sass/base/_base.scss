@@ -18,19 +18,25 @@ body,
 // element's HTML properties
 html {
   font-size: 62.5%;
-  @include respond(tab-land) {
-    // width < 1200?
-    font-size: 65%;
+
+  @include respond(phone) {
+    font-size: 37.5%;
+    
   }
 
   @include respond(tab-port) {
     // width < 900?
-    font-size: 65%;
+    font-size: 56.25%;
+    
+  }
+  @include respond(tab-land) {
+    // width < 1200?
+    font-size: 60%;
+    
   }
 
-  @include respond(desktop) {
-    font-size: 70%;
-  }
+
+
 }
 
 body {
@@ -44,18 +50,23 @@ a {
 input {
   &[type="radio"] + label {
     font-size: $fontSize-medium;
+    margin-left: 1rem;
   }
 }
 
 .container {
+  height: 100%;
   background-color: var(--color-green-primary);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: $PadTop-container;
   padding-bottom: $PadBot-container;
-  height: 100%;
+  overflow: scroll;
   &--home {
     justify-content: space-between;
+  }
+  &--round{
+    
   }
 }

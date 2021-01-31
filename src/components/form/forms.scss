@@ -26,6 +26,9 @@
            justify-content: space-between;
            margin-bottom: 4rem;
        }
+       &__box-input{
+           flex: 1;
+       }
        &__opt{
            text-align: center;
            flex:1;

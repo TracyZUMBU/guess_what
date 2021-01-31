@@ -32,15 +32,15 @@ body,
 
 html {
   font-size: 62.5%; }
-  @media only screen and (min-width: 62em) {
+  @media only screen and (max-width: 37.5em) {
     html {
-      font-size: 65%; } }
-  @media only screen and (min-width: 43em) {
+      font-size: 37.5%; } }
+  @media only screen and (min-width: 56.25em) {
     html {
-      font-size: 65%; } }
+      font-size: 56.25%; } }
   @media only screen and (min-width: 75em) {
     html {
-      font-size: 70%; } }
+      font-size: 60%; } }
 
 body {
   font-family: "Roboto", sans-serif; }
@@ -49,7 +49,7 @@ a {
   cursor: pointer; }
 
 input[type="radio"] + label {
-  font-size: 2.5rem;
+  font-size: 4.5rem;
   margin-left: 1rem; }
 
 .container {
@@ -58,8 +58,8 @@ input[type="radio"] + label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 8.5rem;
-  padding-bottom: 5rem;
+  padding-top: 9.5rem;
+  padding-bottom: 6rem;
   overflow: scroll; }
   .container--home {
     justify-content: space-between; }
@@ -67,7 +67,7 @@ input[type="radio"] + label {
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
-  font-size: 4.4rem; }
+  font-size: 6.4rem; }
 
 .button-container {
   display: flex;
@@ -76,15 +76,15 @@ input[type="radio"] + label {
   margin: 2rem auto; }
 
 .btn {
-  border-radius: 2rem;
-  -webkit-border-radius: 2rem;
-  -moz-border-radius: 2rem;
-  -ms-border-radius: 2rem;
-  -o-border-radius: 2rem;
-  height: 5rem;
+  border-radius: 3rem;
+  -webkit-border-radius: 3rem;
+  -moz-border-radius: 3rem;
+  -ms-border-radius: 3rem;
+  -o-border-radius: 3rem;
+  height: 6rem;
   text-transform: uppercase;
   border: none;
-  font-size: 2.5rem;
+  font-size: 4.5rem;
   font-weight: bold;
   width: 100%; }
   .btn:not(:last-child) {
@@ -105,13 +105,15 @@ input[type="radio"] + label {
     background-color: var(--color-white-secondary);
     margin-top: 5rem; }
   .form__question {
-    font-size: 2.5rem;
+    font-size: 4.5rem;
     margin-top: 2rem; }
   .form__answer {
     display: flex;
     width: 100%;
     justify-content: space-between;
     margin-bottom: 4rem; }
+  .form__box-input {
+    flex: 1; }
   .form__opt {
     text-align: center;
     flex: 1; }

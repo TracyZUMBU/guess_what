@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
+import { Redirect } from "react-router-dom";
 
 //component
 import FormItems from "./FormItems";
 import FormikControl from "../../formSetup/FormikControl";
 import Button from "../button/Button";
-
 
 // Modules
 import {
@@ -18,13 +18,26 @@ import {
 import validationSchema from "../../formSetup/ValidationSchema.js";
 import { initialValues } from "../../formSetup/InitialValues";
 
-
 const Forms = () => {
+  const [redirect, setRedirect] = useState(false);
+  const [setUpGame, setSetUpGame] = useState(null);
 
+  useEffect(() => {
+    try {
+      if (setUpGame != null) {
+        setRedirect(true);
+      }
+    } catch (e) {
+      console.log("error: ", e);
+    }
+  }, [setUpGame]);
+
+  if (redirect && setUpGame != false) {
+    return <Redirect to={{ pathname: "/jouer", state: setUpGame }} />;
+  }
 
   const onSubmit = (values) => {
-    console.log("values:", values);
-    //window.location.replace("/jouer")
+    setSetUpGame(values);
   };
 
   return (
@@ -34,8 +47,8 @@ const Forms = () => {
       onSubmit={onSubmit}
     >
       {(formik) => {
-     console.log(formik.errors, formik.isValid, formik.isSubmitting);
-     
+        console.log(formik.errors, formik.isValid, formik.isSubmitting);
+
         return (
           <Form className="form">
             <FormItems question={"Nombre de partie"}>
@@ -47,18 +60,55 @@ const Forms = () => {
             </FormItems>
 
             <FormItems question={"Noms des joueurs"}>
-              <FormikControl
-                control="input"
-                label="Equipe n°"
-                name="nameOfPlayers"
-                numOfPlayers={formik.values.numOfPlayers}
-              ></FormikControl>
-              <FormikControl
-                control="input"
-                label="k"
-                name="nameOfPlayers1"
-                numOfPlayers={formik.values.numOfPlayers}
-              ></FormikControl>
+              <div className="form__box-input">
+                <FormikControl
+                  control="input"
+                  label="Equipe n°1"
+                  name="playerA"
+                  numOfPlayers={formik.values.numOfPlayers}
+                ></FormikControl>
+                <FormikControl
+                  control="input"
+                  label=""
+                  name="playerB"
+                  numOfPlayers={formik.values.numOfPlayers}
+                ></FormikControl>
+              </div>
+
+              {formik.values.numOfPlayers == 4 ||
+              formik.values.numOfPlayers == 6 ? (
+                <div className="form__box-input">
+                  <FormikControl
+                    control="input"
+                    label="Equipe n°2"
+                    name="playerC"
+                    numOfPlayers={formik.values.numOfPlayers}
+                  ></FormikControl>
+                  <FormikControl
+                    control="input"
+                    label=""
+                    name="playerD"
+                    numOfPlayers={formik.values.numOfPlayers}
+                  ></FormikControl>
+                </div>
+              ) : null}
+
+              {formik.values.numOfPlayers == 6 ? (
+                <div className="form__box-input">
+                  <FormikControl
+                    control="input"
+                    label="Equipe n°3"
+                    name="playerE"
+                    numOfPlayers={formik.values.numOfPlayers}
+                  ></FormikControl>
+                  <FormikControl
+                    control="input"
+                    label=""
+                    name="playerF"
+                    numOfPlayers={formik.values.numOfPlayers}
+                  ></FormikControl>
+                </div>
+              ) : null}
             </FormItems>
 
             <FormItems question={"Choix du niveau"}>
@@ -92,8 +142,9 @@ const Forms = () => {
                 name="roundByGame"
               ></FormikControl>
             </FormItems>
+
             <div className="button-container">
-              <Button type="submit" className="primary" text="Jouer"/>
+              <Button type="submit" className="primary" text="Jouer" />
             </div>
           </Form>
         );

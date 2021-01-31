@@ -5,7 +5,8 @@ import React from 'react'
 import TitlePage from "../../components/titlePage/TitlePage"
 import Button from '../../components/button/Button'
 
-const Round = () => {
+const Round = (props) => {
+    console.log('props:', props, "location: ", props.location, "state :", props.location.state) ;
     return (
         <div className="container container--round">
             <TitlePage title={"Manche"}/>

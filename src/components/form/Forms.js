@@ -6,6 +6,7 @@ import FormItems from "./FormItems";
 import FormikControl from "../../formSetup/FormikControl";
 import Button from "../button/Button";
 
+
 // Modules
 import {
   numOfPlayers,
@@ -15,31 +16,51 @@ import {
   roundByGame,
 } from "../../services/optionForm";
 import validationSchema from "../../formSetup/ValidationSchema.js";
+import { initialValues } from "../../formSetup/InitialValues";
 
-console.log("numOfPlayers:", numOfPlayers + validationSchema);
 
 const Forms = () => {
+
+
+  const onSubmit = (values) => {
+    console.log("values:", values);
+    //window.location.replace("/jouer")
+  };
+
   return (
-    <Formik validationSchema={validationSchema}>
+    <Formik
+      validationSchema={validationSchema}
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+    >
       {(formik) => {
-        console.log("formik :" + formik);
+     console.log(formik.errors, formik.isValid, formik.isSubmitting);
+     
         return (
           <Form className="form">
             <FormItems question={"Nombre de partie"}>
               <FormikControl
                 control="radio"
                 options={numOfPlayers}
-                label="nombre de joueur"
                 name="numOfPlayers"
               />
             </FormItems>
+
             <FormItems question={"Noms des joueurs"}>
               <FormikControl
                 control="input"
                 label="Equipe n°"
                 name="nameOfPlayers"
+                numOfPlayers={formik.values.numOfPlayers}
+              ></FormikControl>
+              <FormikControl
+                control="input"
+                label="k"
+                name="nameOfPlayers1"
+                numOfPlayers={formik.values.numOfPlayers}
               ></FormikControl>
             </FormItems>
+
             <FormItems question={"Choix du niveau"}>
               <FormikControl
                 control="radio"
@@ -47,6 +68,7 @@ const Forms = () => {
                 name="level"
               ></FormikControl>
             </FormItems>
+
             <FormItems question={"Temps par manche"}>
               <FormikControl
                 control="radio"
@@ -54,13 +76,15 @@ const Forms = () => {
                 name="timeByRound"
               ></FormikControl>
             </FormItems>
+
             <FormItems question={"Mots par manche"}>
               <FormikControl
                 control="radio"
                 options={wordByRound}
-                name="gameTime"
+                name="wordByRound"
               ></FormikControl>
             </FormItems>
+
             <FormItems question={"Nombre de manche par partie"}>
               <FormikControl
                 control="radio"
@@ -69,7 +93,7 @@ const Forms = () => {
               ></FormikControl>
             </FormItems>
             <div className="button-container">
-              <Button type="submit" className="primary" text="Jouer" />
+              <Button type="submit" className="primary" text="Jouer"/>
             </div>
           </Form>
         );

@@ -6,7 +6,7 @@ const RadioButtons = (props) => {
     return(
         <Field name={name} {...rest} >
             {({field}) => {
-                console.log(field);
+                //console.log(field);
                 return options.map(opt => {
                     return (
                         <div key={opt.key}className="form__opt">

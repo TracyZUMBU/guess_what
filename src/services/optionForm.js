@@ -1,14 +1,14 @@
 
 export const numOfPlayers = [
-  { key: "2", value: "deux" },
-  { key: "4", value: "quatre" },
-  { key: "6", value: "six" },
+  { key: "2", value: "2" },
+  { key: "4", value: "4" },
+  { key: "6", value: "6" },
 ];
 
 export const level = [
   { key: "Facile", value: "facile" },
   { key: "Normal", value: "normal" },
-  { key: "Difficile", value: "difficle" },
+  { key: "Difficile", value: "difficile"},
 ]
 
 export const timeByRound = [

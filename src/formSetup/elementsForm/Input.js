@@ -1,25 +1,17 @@
-import React from 'react'
-import { ErrorMessage, Field } from "formik"
+import React from "react";
+import { ErrorMessage, Field } from "formik";
 
 const Input = (props) => {
-    const { label, name, ...rest } = props;
-    return(
-        <Field name={name} {...rest} >
-            {({field}) => {
-                console.log(field);
-                return(
-                    <div className="form__opt form__opt--column">
-                        <label>{label}</label>
-                    <input/>
-                    <input/>
-                    </div>
-                )
-                
-            }}
-        </Field>
-    ) 
-         
-    
-}
+  const { label, name, numOfPlayers, ...rest } = props;
 
-export default Input
+  return (
+    <>
+      <div className="form__opt form__opt--column">
+        <label>{label}</label>
+        <Field name={name} {...rest}></Field>
+      </div>
+    </>
+  );
+};
+
+export default Input;

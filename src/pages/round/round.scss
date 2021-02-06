@@ -1,0 +1,19 @@
+.round {
+    &__box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    color: var(--color-white-secondary);
+    padding-bottom: 20rem;
+    text-align: center;
+    line-height: 7rem;
+  }
+  &__team{
+      font-size: $fontSize-medium;
+  }
+  &__name{
+      font-size: $fontSize-small;
+      font-weight: bolder;
+  }
+
+}

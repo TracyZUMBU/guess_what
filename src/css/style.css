@@ -63,6 +63,8 @@ input[type="radio"] + label {
   overflow: scroll; }
   .container--home {
     justify-content: space-between; }
+  .container--round {
+    justify-content: space-between; }
 
 .heading-primary {
   color: #fff;
@@ -120,3 +122,19 @@ input[type="radio"] + label {
     .form__opt--column {
       display: flex;
       flex-direction: column; }
+
+.round__box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--color-white-secondary);
+  padding-bottom: 20rem;
+  text-align: center;
+  line-height: 7rem; }
+
+.round__team {
+  font-size: 4.5rem; }
+
+.round__name {
+  font-size: 3.5rem;
+  font-weight: bolder; }

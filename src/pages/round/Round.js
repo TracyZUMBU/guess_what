@@ -24,7 +24,7 @@ const Round = (props) => {
         </p>
       </div>
       <div className="button-container">
-        <Link to="">
+        <Link to="/startGame">
           <Button className="primary" text={"Lancer la manche"} />
         </Link>
       </div>

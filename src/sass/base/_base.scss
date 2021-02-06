@@ -60,10 +60,22 @@ input {
   padding-top: $PadTop-container;
   padding-bottom: $PadBot-container;
   overflow: scroll;
+  justify-content: space-between;
   &--home {
-    justify-content: space-between;
   }
   &--round{
     justify-content: space-between;
   }
+}
+
+div[class="box"]{
+  color:yellow;
+}
+
+.word{
+  color:black;
+  background-color: var(--color-white-secondary);
+  font-size: $fontSize-medium;
+  font-weight: bold;
+  padding: 1.5rem 2rem;
 }

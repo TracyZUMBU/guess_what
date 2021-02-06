@@ -60,11 +60,20 @@ input[type="radio"] + label {
   align-items: center;
   padding-top: 9.5rem;
   padding-bottom: 6rem;
-  overflow: scroll; }
-  .container--home {
-    justify-content: space-between; }
+  overflow: scroll;
+  justify-content: space-between; }
   .container--round {
     justify-content: space-between; }
+
+div[class="box"] {
+  color: yellow; }
+
+.word {
+  color: black;
+  background-color: var(--color-white-secondary);
+  font-size: 4.5rem;
+  font-weight: bold;
+  padding: 1.5rem 2rem; }
 
 .heading-primary {
   color: #fff;

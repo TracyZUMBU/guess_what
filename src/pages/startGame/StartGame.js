@@ -13,8 +13,8 @@ const StartGame = () => {
         <p className="word">CHAMBRE</p>
       </div>
       <div className="button-container">
-        <Link to="">
-          <Button className="primary" text={"Lancer la manche"} />
+        <Link to="/deviner">
+          <Button className="primary" text={"C'est parti !"} />
         </Link>
       </div>
     </div>

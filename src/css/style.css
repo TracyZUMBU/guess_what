@@ -136,9 +136,17 @@ input[type="radio"] + label {
   font-size: 3.5rem;
   font-weight: bolder; }
 
-.word {
+.word__list {
+  width: 80%; }
+
+.word__item {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
   color: black;
-  background-color: var(--color-white-secondary);
   font-size: 4.5rem;
   font-weight: bold;
   padding: 1.5rem 2rem; }
+
+.icon-box > span:first-child {
+  margin-right: 2rem; }

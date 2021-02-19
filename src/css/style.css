@@ -62,18 +62,6 @@ input[type="radio"] + label {
   padding-bottom: 6rem;
   overflow: scroll;
   justify-content: space-between; }
-  .container--round {
-    justify-content: space-between; }
-
-div[class="box"] {
-  color: yellow; }
-
-.word {
-  color: black;
-  background-color: var(--color-white-secondary);
-  font-size: 4.5rem;
-  font-weight: bold;
-  padding: 1.5rem 2rem; }
 
 .heading-primary {
   color: #fff;
@@ -131,6 +119,21 @@ div[class="box"] {
     .form__opt--column {
       display: flex;
       flex-direction: column; }
+
+.word__list {
+  width: 80%; }
+
+.word__item {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  color: black;
+  font-size: 4.5rem;
+  font-weight: bold;
+  padding: 1.5rem 2rem; }
+
+.icon-box > span:first-child {
+  margin-right: 2rem; }
 
 .round__box {
   display: flex;

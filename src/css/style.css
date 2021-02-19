@@ -120,6 +120,21 @@ input[type="radio"] + label {
       display: flex;
       flex-direction: column; }
 
+.word__list {
+  width: 80%; }
+
+.word__item {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  color: black;
+  font-size: 4.5rem;
+  font-weight: bold;
+  padding: 1.5rem 2rem; }
+
+.icon-box > span:first-child {
+  margin-right: 2rem; }
+
 .round__box {
   display: flex;
   flex-direction: column;
@@ -135,18 +150,3 @@ input[type="radio"] + label {
 .round__name {
   font-size: 3.5rem;
   font-weight: bolder; }
-
-.word__list {
-  width: 80%; }
-
-.word__item {
-  display: flex;
-  justify-content: space-between;
-  padding: 2rem;
-  color: black;
-  font-size: 4.5rem;
-  font-weight: bold;
-  padding: 1.5rem 2rem; }
-
-.icon-box > span:first-child {
-  margin-right: 2rem; }

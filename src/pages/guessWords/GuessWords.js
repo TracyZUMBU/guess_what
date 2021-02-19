@@ -4,7 +4,7 @@ import Countdown from "react-countdown";
 
 // components
 import TitlePage from "../../components/titlePage/TitlePage";
-import WordList from "../../components/word/WordList";
+import WordList from "../../components/wordList/WordList";
 
 const GuessWords = () => {
   const renderer = ({ minutes, seconds, completed }) => {

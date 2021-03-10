@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Countdown from "react-countdown";
 
@@ -7,6 +7,10 @@ import TitlePage from "../../components/titlePage/TitlePage";
 import WordList from "../../components/wordList/WordList";
 
 const GuessWords = () => {
+  //States
+  const [isGameOver, setIsGameOver] = useState(false);
+
+  // setup the counter when is running and when is completed
   const renderer = ({ minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
@@ -22,15 +26,26 @@ const GuessWords = () => {
   };
 
   //Text that appears when the time is over
-  const Completionist = () => <span>FINI!</span>;
+  const Completionist = () => {
+    return <span>FINI!</span>;
+  };
+
+  // function when counter is over
+  const onComplete = () => {
+    setIsGameOver(true);
+  };
 
   return (
     <div className="container container--guessWords">
       <TitlePage title={"Manche n°1"} />
 
-      <Countdown date={Date.now() + 30000} renderer={renderer} />
+      <Countdown
+        date={Date.now() + 5000}
+        renderer={renderer}
+        onComplete={onComplete}
+      />
 
-      <WordList />
+      <WordList isGameOver={isGameOver} />
     </div>
   );
 };

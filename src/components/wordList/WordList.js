@@ -1,55 +1,69 @@
-import React, { useState }  from "react";
+import React, { useState, useEffect } from "react";
 
 // modules
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
-import styled from "styled-components";
 
-//  styled component rules
-const BgColor = styled.li`
-  background-color: ${(props) =>
-    props.color == "yellow" ? "yellow" : "var(--color-white-secondary)"};
-`;
-
+const classNames = require("classnames");
+let wordsToGuess = ["chambre", "salon", "rire", "fusée"];
 const WordList = () => {
   //list of word to make guess
-  let wordArray = ["chambre", "salon", "rire", "fusée"];
+  const numberOfWordToGuess = wordsToGuess.length;
 
-  const [nextQuestion, setNextQuestion] = useState(1);
-  const [wordToDisplay, setWordToDisplay] = useState([wordArray[0]]);
-  const [color, setColor] = useState("white");
+  const [indexWord, setIndexWord] = useState(0);
+  console.log("indexWord:", indexWord);
+  const [wordToDisplay, setWordToDisplay] = useState([wordsToGuess[0]]);
+  const [settled, setSettled] = useState(Array(wordsToGuess.length).fill(null));
+  console.log("settled:", settled);
 
-  // push the next word to guess into the wordToDisplay array
-  const nextWord = () => {
-    setWordToDisplay([...wordToDisplay, wordArray[nextQuestion]]);
+  useEffect(() => {
+    setWordToDisplay(wordsToGuess.slice(0, indexWord + 1));
+  }, [indexWord]);
+
+  
+  const handleAnswer = (index, answer) => {
+    console.log('index:', index)
+    console.log("onclick");
+    if (settled[index] === null) {
+      setSettled((settled) =>
+        settled.map((el, i) => (i === indexWord ? answer : el))
+      );
+      if(indexWord < wordsToGuess.length - 1){
+        setIndexWord(indexWord + 1)
+      }
+    }
+
+  
   };
 
   return (
     <ul className="word__list">
       {wordToDisplay.map((word, i) => (
-        <BgColor key={i} color={color} className="word__item">
+        <li
+          key={i}
+          className={classNames("word__item", {
+            "settled-true": settled[i] === true,
+            "settled-false": settled[i] === false,
+          })}
+        >
           <p className="word">{word}</p>
           <div className="icon-box">
             <span
               onClick={() => {
-                setNextQuestion(nextQuestion + 1);
-                setColor("black");
-                nextWord();
+                handleAnswer(i, false);
               }}
             >
               <FontAwesomeIcon icon={faTimes} color={"#FF5252"} />
             </span>
             <span
               onClick={() => {
-                setNextQuestion(nextQuestion + 1);
-                setColor("yellow");
-                nextWord();
+                handleAnswer(i, true);
               }}
             >
               <FontAwesomeIcon icon={faCheck} color={"#008000"} />
             </span>
           </div>
-        </BgColor>
+        </li>
       ))}
     </ul>
   );

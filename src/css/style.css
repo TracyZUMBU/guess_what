@@ -18,6 +18,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 :root {
   --color-green-primary: #06d6a0;
+  --color-green-secondary: #5DCF36;
   --color-pink-primary: #ef476f;
   --color-white: #fff;
   --color-white-secondary: #f9eae1;
@@ -128,9 +129,16 @@ input[type="radio"] + label {
   justify-content: space-between;
   padding: 2rem;
   color: black;
+  background-color: var(--color-white-secondary);
   font-size: 4.5rem;
   font-weight: bold;
   padding: 1.5rem 2rem; }
+
+.settled-true {
+  background-color: #5dcf36; }
+
+.settled-false {
+  background-color: #d15f5f; }
 
 .icon-box > span:first-child {
   margin-right: 2rem; }

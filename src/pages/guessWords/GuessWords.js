@@ -13,7 +13,6 @@ const GuessWords = () => {
   // setup the counter when is running and when is completed
   const renderer = ({ minutes, seconds, completed }) => {
     if (completed) {
-      // Render a completed state
       return <Completionist />;
     } else {
       // Render a countdown
@@ -30,10 +29,7 @@ const GuessWords = () => {
     return <span>FINI!</span>;
   };
 
-  // function when counter is over
-  const onComplete = () => {
-    setIsGameOver(true);
-  };
+
 
   return (
     <div className="container container--guessWords">
@@ -42,7 +38,7 @@ const GuessWords = () => {
       <Countdown
         date={Date.now() + 5000}
         renderer={renderer}
-        onComplete={onComplete}
+        onComplete={()=>setIsGameOver(true)}
       />
 
       <WordList isGameOver={isGameOver} />

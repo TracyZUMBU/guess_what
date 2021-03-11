@@ -1,8 +1,9 @@
+//Imports
 import React, { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import { Redirect } from "react-router-dom";
 
-//component
+//components
 import FormItems from "./FormItems";
 import FormikControl from "../../formSetup/FormikControl";
 import Button from "../button/Button";
@@ -18,27 +19,62 @@ import {
 import validationSchema from "../../formSetup/ValidationSchema.js";
 import { initialValues } from "../../formSetup/InitialValues";
 
-const Forms = () => {
+import { connect } from "react-redux";
+
+const Forms = (props) => {
+  //States
   const [redirect, setRedirect] = useState(false);
-  const [setUpGame, setSetUpGame] = useState(null);
+  const [totalPlayer, setTotalPlayer] = useState(0);
+  console.log("totalPlayer:", totalPlayer);
 
-  useEffect(() => {
-    try {
-      if (setUpGame != null) {
-        setRedirect(true);
-      }
-    } catch (e) {
-      console.log("error: ", e);
+  
+
+  // component input
+  let inputForNameOfPlayer = [];
+  console.log("inputForNameOfPlayer:", inputForNameOfPlayer);
+  for (let i = 0; i < totalPlayer / 2; i++) {
+    let teamNumber = "";
+    console.log("teamNumber:", teamNumber);
+
+    if (totalPlayer == 2) {
+      teamNumber = 1;
+    } else if (totalPlayer == 4) {
+      teamNumber = 2;
+    } else if (totalPlayer == 6) {
+      teamNumber = 3;
     }
-  }, [setUpGame]);
 
-  if (redirect && setUpGame != false) {
-    return <Redirect to={{ pathname: "/jouer", state: setUpGame }} />;
+    inputForNameOfPlayer.push(
+      <div className="form__box-input">
+        <FormikControl
+          control="input"
+          label={`Equipe n°${teamNumber}`}
+          name="playerA"
+          numOfPlayers={totalPlayer}
+        ></FormikControl>
+        <FormikControl
+          control="input"
+          label=""
+          name="playerB"
+          numOfPlayers={totalPlayer}
+        ></FormikControl>
+      </div>
+    );
   }
 
-  const onSubmit = (values) => {
-    setSetUpGame(values);
+  // function that will call when submitting the form
+  const onSubmit =  (values) => {
+    //send the values object to the reducer
+    props.storeDatasGame(values)
+    
+    setRedirect(true)
+  
   };
+
+  // launch the game
+  if (redirect) {
+    return <Redirect to={{ pathname: "/jouer"}} />;
+  }
 
   return (
     <Formik
@@ -47,7 +83,12 @@ const Forms = () => {
       onSubmit={onSubmit}
     >
       {(formik) => {
-        console.log(formik.errors, formik.isValid, formik.isSubmitting);
+        setTotalPlayer(
+          formik.values.numOfPlayers === "" || formik.values.numOfPlayers == "2"
+            ? 2
+            : formik.values.numOfPlayers
+        );
+      
 
         return (
           <Form className="form">
@@ -60,55 +101,7 @@ const Forms = () => {
             </FormItems>
 
             <FormItems question={"Noms des joueurs"}>
-              <div className="form__box-input">
-                <FormikControl
-                  control="input"
-                  label="Equipe n°1"
-                  name="playerA"
-                  numOfPlayers={formik.values.numOfPlayers}
-                ></FormikControl>
-                <FormikControl
-                  control="input"
-                  label=""
-                  name="playerB"
-                  numOfPlayers={formik.values.numOfPlayers}
-                ></FormikControl>
-              </div>
-
-              {formik.values.numOfPlayers == 4 ||
-              formik.values.numOfPlayers == 6 ? (
-                <div className="form__box-input">
-                  <FormikControl
-                    control="input"
-                    label="Equipe n°2"
-                    name="playerC"
-                    numOfPlayers={formik.values.numOfPlayers}
-                  ></FormikControl>
-                  <FormikControl
-                    control="input"
-                    label=""
-                    name="playerD"
-                    numOfPlayers={formik.values.numOfPlayers}
-                  ></FormikControl>
-                </div>
-              ) : null}
-
-              {formik.values.numOfPlayers == 6 ? (
-                <div className="form__box-input">
-                  <FormikControl
-                    control="input"
-                    label="Equipe n°3"
-                    name="playerE"
-                    numOfPlayers={formik.values.numOfPlayers}
-                  ></FormikControl>
-                  <FormikControl
-                    control="input"
-                    label=""
-                    name="playerF"
-                    numOfPlayers={formik.values.numOfPlayers}
-                  ></FormikControl>
-                </div>
-              ) : null}
+              {inputForNameOfPlayer}
             </FormItems>
 
             <FormItems question={"Choix du niveau"}>
@@ -153,4 +146,13 @@ const Forms = () => {
   );
 };
 
-export default Forms;
+// component Conteneur
+function mapDispatchToProps(dispatch) {
+  return {
+    storeDatasGame: function (values) {
+      dispatch({ type: "datasGame", datas: values });
+    },
+  };
+}
+
+export default connect(null, mapDispatchToProps)(Forms);

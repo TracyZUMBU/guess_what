@@ -46,15 +46,15 @@ const WordList = ({ isGameOver }) => {
         >
           <p className="word">{word}</p>
           <div className="icon-box">
-            <span
-              onClick={() => {
+            <span 
+              onClick={isGameOver ? null : () => {
                 handleAnswer(i, false);
               }}
             >
               <FontAwesomeIcon icon={faTimes} color={"#FF5252"} />
             </span>
             <span
-              onClick={() => {
+              onClick={isGameOver ? null : () => {
                 handleAnswer(i, true);
               }}
             >

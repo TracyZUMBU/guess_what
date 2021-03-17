@@ -12,24 +12,24 @@ export const level = [
 ]
 
 export const timeByRound = [
-  { key: "30", value: "thirty" },
-  { key: "45", value: "fourtyFive" },
-  { key: "60", value: "sixty" },
-  { key: "90", value: "ninety" }
+  { key: "30", value: "30000" },
+  { key: "45", value: "45000" },
+  { key: "60", value: "60000" },
+  { key: "90", value: "90000" }
 ]
 
 export const wordByRound = [
-  { key: "5", value: "five" },
-  { key: "6", value: "six" },
-  { key: "7", value: "seven" },
-  { key: "8", value: "eight" },
-  { key: "9", value: "nine" }
+  { key: "5", value: "5" },
+  { key: "6", value: "6" },
+  { key: "7", value: "7" },
+  { key: "8", value: "8" },
+  { key: "9", value: "9" }
 ]
 
 export const roundByGame = [
-  { key: "3", value: "three" },
-  { key: "5", value: "five" },
-  { key: "7", value: "seven" }
+  { key: "3", value: "3" },
+  { key: "5", value: "5" },
+  { key: "7", value: "7" }
 ]
 
 

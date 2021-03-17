@@ -1,12 +1,15 @@
 //Imports
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { Formik, Form } from "formik";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 //components
 import FormItems from "./FormItems";
 import FormikControl from "../../formSetup/FormikControl";
 import Button from "../button/Button";
+import validationSchema from "../../formSetup/ValidationSchema.js";
+import { initialValues } from "../../formSetup/InitialValues";
 
 // Modules
 import {
@@ -16,65 +19,60 @@ import {
   wordByRound,
   roundByGame,
 } from "../../services/optionForm";
-import validationSchema from "../../formSetup/ValidationSchema.js";
-import { initialValues } from "../../formSetup/InitialValues";
-
-import { connect } from "react-redux";
 
 const Forms = (props) => {
   //States
-  const [redirect, setRedirect] = useState(false);
+  const [launchGame, setLaunchGame] = useState(false);
   const [totalPlayer, setTotalPlayer] = useState(0);
-  console.log("totalPlayer:", totalPlayer);
 
-  
-
-  // component input
+  if (launchGame) {
+    return <Redirect to={{ pathname: "/jouer" }} />;
+  }
+  // display a number of input based on the number of player
   let inputForNameOfPlayer = [];
-  console.log("inputForNameOfPlayer:", inputForNameOfPlayer);
   for (let i = 0; i < totalPlayer / 2; i++) {
-    let teamNumber = "";
-    console.log("teamNumber:", teamNumber);
-
-    if (totalPlayer == 2) {
-      teamNumber = 1;
-    } else if (totalPlayer == 4) {
-      teamNumber = 2;
-    } else if (totalPlayer == 6) {
-      teamNumber = 3;
-    }
-
+ 
     inputForNameOfPlayer.push(
-      <div className="form__box-input">
+      <div key={i} className="form__box-input">
         <FormikControl
           control="input"
-          label={`Equipe n°${teamNumber}`}
-          name="playerA"
+          label={`Equipe n°${i + 1}`}
+          name={`team${i + 1}-A`}
           numOfPlayers={totalPlayer}
         ></FormikControl>
         <FormikControl
           control="input"
           label=""
-          name="playerB"
+          name={`team${i + 1}-B`}
           numOfPlayers={totalPlayer}
         ></FormikControl>
       </div>
     );
   }
 
-  // function that will call when submitting the form
-  const onSubmit =  (values) => {
-    //send the values object to the reducer
-    props.storeDatasGame(values)
-    
-    setRedirect(true)
-  
-  };
+  const onSubmit = (values) => {
+    console.log("values:", values);
+    const nbrKeys = Object.entries(values).length;
+    let teams = [];
 
-  // launch the game
-  if (redirect) {
-    return <Redirect to={{ pathname: "/jouer"}} />;
-  }
+
+    // put the player of the same team inside the same object
+    for (let i = 0; i < nbrKeys; i++) {
+      if (Object.keys(values)[i].includes("team")) {
+        console.log("values:", Object.keys(values)[i]);
+        let obj = {};
+        obj[Object.keys(values)[i]] = Object.values(values)[i];
+        
+        teams.push(obj);
+      }
+    }
+
+    console.log("teams:", teams);
+    teams.sort()
+    //send the values object to the reducer
+    props.storeDatasGame({...values, teams});
+    setLaunchGame(true);
+  };
 
   return (
     <Formik
@@ -84,11 +82,10 @@ const Forms = (props) => {
     >
       {(formik) => {
         setTotalPlayer(
-          formik.values.numOfPlayers === "" || formik.values.numOfPlayers == "2"
+          formik.values.numOfPlayers === "" || formik.values.numOfPlayers === "2"
             ? 2
             : formik.values.numOfPlayers
         );
-      
 
         return (
           <Form className="form">

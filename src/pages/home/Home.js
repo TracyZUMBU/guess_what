@@ -4,7 +4,7 @@ import  Button  from "../../components/button/Button";
 import TitlePage from "../../components/titlePage/TitlePage";
 
 
-const Home = (props) => {
+const Home = () => {
   return (
     <div className="container container--home">
       <TitlePage title={"Guess What"} />

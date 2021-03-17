@@ -1,5 +1,5 @@
 import React from "react";
-import { ErrorMessage, Field } from "formik";
+import { Field } from "formik";
 
 const Input = (props) => {
   const { label, name, numOfPlayers, ...rest } = props;

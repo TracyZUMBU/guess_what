@@ -8,10 +8,8 @@ const FormikControl = (props) => {
     switch (control) {
       case "input":
         return <Input {...rest} />;
-        break
       case "radio":
         return <RadioButtons {...rest} />;
-        break
       default:
         return null;
     }

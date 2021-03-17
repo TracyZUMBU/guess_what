@@ -11,12 +11,13 @@ import GuessWords from "./pages/guessWords/GuessWords";
 
 //Reducer
 import datasGame from "./reducers/datasGame.reducer";
+import currentGame from "./reducers/currentGame.reducer"
 //Provider
 import { Provider } from "react-redux";
 //Store
 import { createStore, combineReducers } from "redux";
 const store = createStore(
-  combineReducers({ datasGame})
+  combineReducers({ datasGame, currentGame})
 );
 
 const App = () => {

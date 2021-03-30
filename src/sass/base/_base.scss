@@ -8,6 +8,7 @@
   --color-black: #000;
   --color-right-answer: #5dcf36;
   --color-wrong-answer: #d15f5f;
+  --bgColor: linear-gradient(to right top, #051937, #0c1b3b, #141c3f, #1c1d43, #231e46);
 }
 
 html,
@@ -54,9 +55,9 @@ input {
 
 .container {
   height: 100%;
-  background-color: var(--color-green-primary);
+  background-image: var(--bgColor);
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   align-items: center;
   padding-top: $PadTop-container;
   padding-bottom: $PadBot-container;

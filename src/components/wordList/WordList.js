@@ -1,28 +1,41 @@
 import React, { useState, useEffect } from "react";
-import {connect} from "react-redux"
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 // modules
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
 
+// component
+import Button from "../../components/button/Button"
 
-const WordList = ({ isGameOver, datasGame }) => {
-  console.log("isGameOver:", isGameOver);
-  const numberOfWordsToGuess = datasGame.wordByRound
-  let wordsToGuess = ["chambre", "salon", "rire", "fusée", "homme", "cuisine", "chanter", "pied", "hurler"].slice(0,numberOfWordsToGuess);
- 
+const WordList = ({ isGameOver, datasGame, currentGame, upDateScore }) => {
+  console.log('currentGame',currentGame, datasGame)
+  
+  const numberOfWordsToGuess = datasGame.wordByRound;
+  let wordsToGuess = [
+    "chambre",
+    "salon",
+    "rire",
+    "fusée",
+    "homme",
+    "cuisine",
+    "chanter",
+    "pied",
+    "hurler",
+  ].slice(0, numberOfWordsToGuess);
+
   // States
   const [indexWord, setIndexWord] = useState(0);
   console.log("indexWord:", indexWord);
   const [wordToDisplay, setWordToDisplay] = useState([wordsToGuess[0]]);
   const [settled, setSettled] = useState(Array(wordsToGuess.length).fill(null));
 
-
   useEffect(() => {
     //each time that the indexWord change the wordToDisplay array will receive the next element of wordToGuess array
     setWordToDisplay(wordsToGuess.slice(0, indexWord + 1));
-  }, [indexWord, wordsToGuess]);
+  }, [indexWord]);
 
   const handleAnswer = (index, answer) => {
     // will change the color of li element
@@ -36,41 +49,68 @@ const WordList = ({ isGameOver, datasGame }) => {
     }
   };
 
+  
+  const score = settled.filter(el => el === true).length
+  console.log('score', score)
   return (
-    <ul className="word__list">
-      {wordToDisplay.map((word, i) => (
-        <li
-          key={i}
-          className={classNames("word__item", {
-            "settled-true": settled[i] === true,
-            "settled-false": settled[i] === false,
-          })}
-        >
-          <p className="word">{word}</p>
-          <div className="icon-box">
-            <span 
-              onClick={isGameOver ? null : () => {
-                handleAnswer(i, false);
-              }}
-            >
-              <FontAwesomeIcon icon={faTimes} color={"#FF5252"} />
-            </span>
-            <span
-              onClick={isGameOver ? null : () => {
-                handleAnswer(i, true);
-              }}
-            >
-              <FontAwesomeIcon icon={faCheck} color={"#008000"} />
-            </span>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul className="word__list">
+        {wordToDisplay.map((word, i) => (
+          <li
+            key={i}
+            className={classNames("word__item", {
+              "settled-true": settled[i] === true,
+              "settled-false": settled[i] === false,
+            })}
+          >
+            <p className="word">{word}</p>
+            <div className="icon-box">
+              <span
+                onClick={
+                  isGameOver
+                    ? null
+                    : () => {
+                        handleAnswer(i, false);
+                      }
+                }
+              >
+                <FontAwesomeIcon icon={faTimes} color={"#FF5252"} />
+              </span>
+              <span
+                onClick={
+                  isGameOver
+                    ? null
+                    : () => {
+                        handleAnswer(i, true);
+                      }
+                }
+              >
+                <FontAwesomeIcon icon={faCheck} color={"#008000"} />
+              </span>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <Link
+      onClick={()=> upDateScore(score, currentGame.currentTeam ) }
+        to="/score"
+      >
+        <Button className="primary" text={"Terminer"} />
+      </Link>
+    </>
   );
 };
 
 function mapStateToProps(state) {
-  return {datasGame : state.datasGame};
+  return { datasGame: state.datasGame, currentGame: state.currentGame };
 }
 
-export default connect(mapStateToProps,null)(WordList);
+function mapDispatchToProps(dispatch) {
+  return {
+    upDateScore: function (score, team) {
+      dispatch({ type: "score",  datas: {score: score, team: team  }});
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WordList);

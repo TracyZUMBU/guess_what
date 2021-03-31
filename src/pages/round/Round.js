@@ -21,7 +21,7 @@ console.log('currentGame:', currentGame)
         </p>
       </div>
       <div className="button-container">
-        <Link to="/startGame" onClick={() => updateCurrentGame(currentGame.currentTeam + 2) } >
+        <Link to="/startGame" onClick={() => updateCurrentGame(currentGame.currentRound + 1) } >
           <Button className="primary" text={"Lancer la manche"} />
         </Link>
       </div>

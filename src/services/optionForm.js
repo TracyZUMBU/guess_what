@@ -27,7 +27,7 @@ export const wordByRound = [
 ]
 
 export const roundByGame = [
-  { key: "3", value: "3" },
+  { key: "1", value: "1" },
   { key: "5", value: "5" },
   { key: "7", value: "7" }
 ]

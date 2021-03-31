@@ -8,6 +8,7 @@ import Round from "./pages/round/Round";
 import StartGame from "./pages/startGame/StartGame";
 import Game from "./pages/game/Game";
 import GuessWords from "./pages/guessWords/GuessWords";
+import scorePage from "./pages/scorePage/scorePage";
 
 //Reducer
 import datasGame from "./reducers/datasGame.reducer";
@@ -31,6 +32,7 @@ const App = () => {
           <Route exact path="/startGame" component={StartGame} />
           <Route exct path="/jeu" component={Game} />
           <Route exact path="/deviner" component={GuessWords} />
+          <Route exact path="/score" component={scorePage} />
         </Switch>
       </Router>
     </Provider>

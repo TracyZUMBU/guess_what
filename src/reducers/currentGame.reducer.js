@@ -1,22 +1,24 @@
 export default function (
   initialGame = {
     currentTeam: 0,
-    scoreTeam: [0, 1, 5],
-    currentRound: 1,
+    scoreTeam: [],
+    currentRound: 0,
+    teamRound: [],
   },
   action
 ) {
   console.log("action-currentGame:", action);
+  console.log("currentGame:", initialGame);
+  const {scoreTeam, teamRound, currentRound, currentTeam} = initialGame;
   if (action.type === "currentGame") {
-    const currentTeam = action.updateDatas
-    const currentGame = {
-      scoreTeam: [0, 1, 5],
-      currentTeam: currentTeam,
-      currentRound: 1,
-    };
-    console.log("currentGame:", currentGame);
-    return currentGame;
-  } else {
-    return initialGame;
-  }
+  initialGame.currentRound += action.updateDatas
+  return initialGame;
+} else if (action.type === "score") {
+  const datas = action.datas
+  scoreTeam[datas.team] = datas.score
+  teamRound[datas.team] = currentRound
+  return initialGame;
+} else {
+  return initialGame;
+}
 }

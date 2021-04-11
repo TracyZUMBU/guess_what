@@ -11,7 +11,7 @@ import classNames from "classnames";
 import Button from "../../components/button/Button"
 
 const WordList = ({ isGameOver, datasGame, currentGame, upDateScore }) => {
-  console.log('currentGame',currentGame, datasGame)
+
   
   const numberOfWordsToGuess = datasGame.wordByRound;
   let wordsToGuess = [
@@ -28,7 +28,7 @@ const WordList = ({ isGameOver, datasGame, currentGame, upDateScore }) => {
 
   // States
   const [indexWord, setIndexWord] = useState(0);
-  console.log("indexWord:", indexWord);
+
   const [wordToDisplay, setWordToDisplay] = useState([wordsToGuess[0]]);
   const [settled, setSettled] = useState(Array(wordsToGuess.length).fill(null));
 

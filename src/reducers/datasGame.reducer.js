@@ -10,7 +10,6 @@ export default function (datas = {}, action) {
         (datasGame.numOfPlayers / 2)),
       timeByRound: parseInt(datasGame.timeByRound),
       wordsByRound: parseInt(datasGame.wordByRound),
-
       teams: datasGame.teams,
     };
   

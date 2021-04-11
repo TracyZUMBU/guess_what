@@ -7,21 +7,21 @@ import {connect} from "react-redux"
 import TitlePage from "../../components/titlePage/TitlePage";
 import Button from "../../components/button/Button";
 
-const Round = ({currentGame, datasGame, updateCurrentGame}) => {
-
+const Round = ({currentGame, datasGame, updateRound}) => {
+const {currentTeam, currentRound} = currentGame;
 console.log('currentGame:', currentGame)
 
   return (
     <div className="container container--round">
       <TitlePage title={"Manche"} />
       <div className="round__box">
-        <h2 className="round__team">Equipe n°{currentGame.currentTeam + 1}</h2>
+        <h2 className="round__team">Equipe n°{currentTeam+1}</h2>
         <p className="round__name">
-          {Object.values(datasGame.teams[currentGame.currentTeam])} et {Object.values(datasGame.teams[currentGame.currentTeam+1])} à vous de jouer
+          {Object.values(datasGame.teams[currentTeam])} et {Object.values(datasGame.teams[currentTeam+1])} à vous de jouer
         </p>
       </div>
       <div className="button-container">
-        <Link to="/startGame" onClick={() => updateCurrentGame(currentGame.currentRound + 1) } >
+        <Link to="/startGame" >
           <Button className="primary" text={"Lancer la manche"} />
         </Link>
       </div>
@@ -36,9 +36,9 @@ function mapStateToProps(state) {
 // component Conteneur
 function mapDispatchToProps(dispatch) {
   return {
-    updateCurrentGame: function (currentTeam) {
-      console.log('currentTeam:', currentTeam)
-      dispatch({ type: "currentGame", updateDatas: currentTeam });
+    updateRound: function (nextRound) {
+      console.log('nextRound:', nextRound)
+      dispatch({ type: "updateRound", nextRound: nextRound });
     },
   };
 }
